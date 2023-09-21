@@ -25,12 +25,34 @@ function App() {
     setDate(event.target.value);
   }
 
+  async function handleCreateTranaction(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = {
+      category: form.category.value,
+      description: form.description.value,
+      amount: form.amount.value,
+      date: form.date.value
+    }
+    const response = await fetch('https://bank-of-flatiron-backend.onrender.com/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+    const newTransaction = await response.json();
+    setTransactions([...transactions, newTransaction]);
+  }
+
   // Fetch data from a local API when the component mounts
   useEffect(() => {
     fetch("https://bank-of-flatiron-backend.onrender.com/transactions")
       .then((response) => response.json())
       .then((data) => setTransactions(data));
   }, []);
+
+
 
   return (
     <div className="App">
@@ -69,7 +91,7 @@ function App() {
         {/* Add new transaction */}
         <div className='new-transaction'>
           <h2>New Transaction</h2>
-          <form action='https://bank-of-flatiron-backend.onrender.com/transactions' method='POST'>
+          <form onSubmit={(event) => handleCreateTranaction(event)}>
             <label htmlFor="category">Category:</label>
             <select name="category" id="category">
               <option value="Income">Income</option>
