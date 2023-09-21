@@ -39,3 +39,7 @@ npm start
 - [x] JavaScript
 - [x] CSS
 - [x] HTML
+
+## Deployment
+- Backend API: https://bank-of-flatiron-backend.onrender.com/transactions
+- Frontend: https://bank-of-flatiron-l583.onrender.com
