@@ -3,6 +3,8 @@
 ## Overview
 This is a simple web app built using React. It allows you to view your transactions, categorize them, search for specific transactions, and add new transactions.
 
+![Bank of Flatiron](./docs/screenshot.jpeg)
+
 ## Features
 - View a list of transactions.
 - Filter transactions by category, date, and search keywords.
